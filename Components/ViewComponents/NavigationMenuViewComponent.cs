@@ -4,7 +4,7 @@ using newAspProject.Models;
 
 namespace newAspProject.Components.ViewComponents
 {
-    public class NavigationMenuComponent : ViewComponent
+  public class NavigationMenuViewComponent : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

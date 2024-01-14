@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +9,10 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/newAspProject.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <header>
-      @await Component.InvokeAsync("NavigationMenu")
+        @await Component.InvokeAsync("NavigationMenu")
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -28,4 +30,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
