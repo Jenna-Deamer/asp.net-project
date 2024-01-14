@@ -3,6 +3,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace newAspProject.Models
 {
+    public enum ProductWeightUnit
+    {
+        //Capital letters  for enums like constants
+        //never add to the middle or top. Only add new to the bottom of the list
+        //grams is 0, kilo is 1 so on...
+        //if you add new items in. it will malign the data in the db
+        GRAMS,
+        KILOGRAMS,
+        POUNDS,
+        OUNCES,
+        LITERS,
+        UNITS
+    }
     public class Product
     {
         //will auto setup as a primary key with autoIncr during migration
@@ -29,6 +42,14 @@ namespace newAspProject.Models
         //Make datatype currency. Ensures it is stored as currency
         [DataType(DataType.Currency)]
         public decimal MSRP { get; set; } = 0.01M;
+
+        [Required]
+        [Range(0.01, 999999.99)]
+        public decimal Weight {get; set;} = 0.01M; //post prefix it with M
+
+
+        [Required]
+        public ProductWeightUnit WeightUnit {get; set;} = ProductWeightUnit.UNITS;
 
         //no product can exist without a parent (Department)
         [ForeignKey("DepartmentId")]

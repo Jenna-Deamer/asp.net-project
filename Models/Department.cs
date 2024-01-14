@@ -4,9 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace newAspProject.Models
 {
+    //this will create a table called Department
+    //it will have a id, name and desc column
     public class Department
     {
         [Key] //Data annotation (specifies this is a primary key)
+        //this represents a function, the next augments is the next line under it
 
         //all props for DB have to be public. We access them from everywhere
         public int Id { get; set; } = 0; //set the value to 0. When we add a new record to DB it will auto increment
@@ -18,11 +21,12 @@ namespace newAspProject.Models
         //string? Allows the field to be optional. it is best practice to pre set it. 
         public string? Description { get; set; } = String.Empty;
 
-        //Relationship with Products and place to store products in the Department instance
         //ICollection is like an array
-        public virtual ICollection<Product>? Products { get; set; }
+          //this field is meant to store the products related to that department
+        public virtual ICollection<Product>? Products { get; set; } = new List<Product>();
         //creates a relationship to the table and says product table is the child will allow us to auto
         //load that department record up with products
 
+      
     }
 }

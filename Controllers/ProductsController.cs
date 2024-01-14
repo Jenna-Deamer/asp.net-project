@@ -49,6 +49,7 @@ namespace newAspProject.Controllers
         public IActionResult Create()
         {
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name");
+            ViewData["WeightUnit"] = new SelectList(Enum.GetValues(typeof(ProductWeightUnit)));
             return View();
         }
 
@@ -66,6 +67,7 @@ namespace newAspProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
+             ViewData["WeightUnit"] = new SelectList(Enum.GetValues(typeof(ProductWeightUnit)));
             return View(product);
         }
 
@@ -83,6 +85,7 @@ namespace newAspProject.Controllers
                 return NotFound();
             }
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
+            ViewData["WeightUnit"] = new SelectList(Enum.GetValues(typeof(ProductWeightUnit)));
             return View(product);
         }
 
@@ -119,6 +122,7 @@ namespace newAspProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
+             ViewData["WeightUnit"] = new SelectList(Enum.GetValues(typeof(ProductWeightUnit)));
             return View(product);
         }
 
@@ -155,14 +159,14 @@ namespace newAspProject.Controllers
             {
                 _context.products.Remove(product);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
         {
-          return (_context.products?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.products?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
