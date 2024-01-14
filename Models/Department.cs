@@ -23,7 +23,7 @@ namespace newAspProject.Models
 
         //ICollection is like an array
           //this field is meant to store the products related to that department
-        public virtual ICollection<Product>? Products { get; set; } = new List<Product>();
+        public virtual ICollection<Product> Products { get; set; } = new List<Product>(); //if empty, set an empty product list so it is not null 
         //creates a relationship to the table and says product table is the child will allow us to auto
         //load that department record up with products
 

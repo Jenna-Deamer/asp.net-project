@@ -36,7 +36,8 @@ namespace newAspProject.Controllers
             }
 
             var department = await _context.Departments
-                .FirstOrDefaultAsync(m => m.Id == id);
+            .Include(department => department.Products) //lambda a anonymous function. This creates a join statement. Grabs all products related to that department. 
+                .FirstOrDefaultAsync(m => m.Id == id); //select * from department where id = the id we are passing
             if (department == null)
             {
                 return NotFound();
