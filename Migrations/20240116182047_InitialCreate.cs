@@ -6,7 +6,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace newAspProject.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,7 +30,7 @@ namespace newAspProject.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "products",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -39,13 +39,15 @@ namespace newAspProject.Migrations
                     Name = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
                     Description = table.Column<string>(type: "varchar(1000)", maxLength: 1000, nullable: true),
                     Image = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: true),
-                    MSRP = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    MSRP = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    WeightUnit = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_products", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_products_Departments_DepartmentId",
+                        name: "FK_Products_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
@@ -54,8 +56,8 @@ namespace newAspProject.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_DepartmentId",
-                table: "products",
+                name: "IX_Products_DepartmentId",
+                table: "Products",
                 column: "DepartmentId");
         }
 
@@ -63,7 +65,7 @@ namespace newAspProject.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "products");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Departments");

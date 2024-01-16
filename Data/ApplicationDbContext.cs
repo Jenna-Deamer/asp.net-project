@@ -11,7 +11,8 @@ namespace WorldDominion.Models
         }
 
         //define modal name and table name
+        //these lines determine what gets put into the DB
         public DbSet<Department> Departments { get; set; }
-        public DbSet<Product> products { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

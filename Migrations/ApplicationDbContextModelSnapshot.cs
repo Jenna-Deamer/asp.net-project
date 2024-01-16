@@ -73,7 +73,7 @@ namespace newAspProject.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("products");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("newAspProject.Models.Product", b =>

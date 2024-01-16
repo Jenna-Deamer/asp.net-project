@@ -10,8 +10,8 @@ using WorldDominion.Models;
 namespace newAspProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240114041058_AddWeightAndWeightTypeToColumn")]
-    partial class AddWeightAndWeightTypeToColumn
+    [Migration("20240116182047_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace newAspProject.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("products");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("newAspProject.Models.Product", b =>

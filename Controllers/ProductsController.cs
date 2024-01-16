@@ -22,19 +22,19 @@ namespace newAspProject.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.products.Include(p => p.Department);
+            var applicationDbContext = _context.Products.Include(p => p.Department);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.products == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.products
+            var product = await _context.Products
                 .Include(p => p.Department)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -74,12 +74,12 @@ namespace newAspProject.Controllers
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.products == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.products.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -129,12 +129,12 @@ namespace newAspProject.Controllers
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.products == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.products
+            var product = await _context.Products
                 .Include(p => p.Department)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -150,14 +150,14 @@ namespace newAspProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.products == null)
+            if (_context.Products == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.products'  is null.");
             }
-            var product = await _context.products.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
-                _context.products.Remove(product);
+                _context.Products.Remove(product);
             }
 
             await _context.SaveChangesAsync();
@@ -166,7 +166,7 @@ namespace newAspProject.Controllers
 
         private bool ProductExists(int id)
         {
-            return (_context.products?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
